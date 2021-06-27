@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:bmi_cal/bmi_card.dart';
 import 'package:bmi_cal/color_container.dart';
@@ -35,6 +36,8 @@ class _HomePageState extends State<HomePage> {
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.baseline,
+              textBaseline: TextBaseline.alphabetic,
               children: [
                 Text(
                   '${_weightCurrentValue.toInt()}',
@@ -46,7 +49,7 @@ class _HomePageState extends State<HomePage> {
                   ),
                 ),
                 Text(
-                  '  KG',
+                  ' KG',
                   textAlign: TextAlign.start,
                   style: TextStyle(
                     // textBaseline: TextBaseline,
@@ -57,17 +60,23 @@ class _HomePageState extends State<HomePage> {
                 ),
               ],
             ),
-            Slider(
-              value: _weightCurrentValue,
-              min: 10,
-              max: 200,
-              activeColor: colorContainer.accentColor,
-              label: _weightCurrentValue.round().toString(),
-              onChanged: (double value) {
-                setState(() {
-                  _weightCurrentValue = value;
-                });
-              },
+            SliderTheme(
+              data: SliderTheme.of(context).copyWith(
+                thumbShape: RoundSliderThumbShape(enabledThumbRadius: 15.0),
+                overlayShape: RoundSliderOverlayShape(overlayRadius: 30.0),
+              ),
+              child: Slider(
+                value: _weightCurrentValue,
+                min: 10,
+                max: 200,
+                activeColor: colorContainer.accentColor,
+                label: _weightCurrentValue.round().toString(),
+                onChanged: (double value) {
+                  setState(() {
+                    _weightCurrentValue = value;
+                  });
+                },
+              ),
             ),
           ],
           flex: 4,
@@ -86,6 +95,8 @@ class _HomePageState extends State<HomePage> {
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.baseline,
+              textBaseline: TextBaseline.alphabetic,
               children: [
                 Text(
                   '${_heightCurrentValue.toInt()}',
@@ -97,8 +108,7 @@ class _HomePageState extends State<HomePage> {
                   ),
                 ),
                 Text(
-                  '  cm',
-                  textAlign: TextAlign.start,
+                  ' cm',
                   style: TextStyle(
                     // textBaseline: TextBaseline,
                     fontSize: 20.0,
@@ -108,17 +118,23 @@ class _HomePageState extends State<HomePage> {
                 ),
               ],
             ),
-            Slider(
-              value: _heightCurrentValue,
-              min: 50,
-              max: 250,
-              activeColor: colorContainer.accentColor,
-              label: _heightCurrentValue.round().toString(),
-              onChanged: (double value) {
-                setState(() {
-                  _heightCurrentValue = value;
-                });
-              },
+            SliderTheme(
+              data: SliderTheme.of(context).copyWith(
+                thumbShape: RoundSliderThumbShape(enabledThumbRadius: 15.0),
+                overlayShape: RoundSliderOverlayShape(overlayRadius: 30.0),
+              ),
+              child: Slider(
+                value: _heightCurrentValue,
+                min: 50,
+                max: 250,
+                activeColor: colorContainer.accentColor,
+                label: _heightCurrentValue.round().toString(),
+                onChanged: (double value) {
+                  setState(() {
+                    _heightCurrentValue = value;
+                  });
+                },
+              ),
             ),
           ],
           flex: 4,
@@ -138,8 +154,11 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
             style: TextButton.styleFrom(
-                primary: colorContainer.scaffoldBackgroundColor,
-                backgroundColor: colorContainer.accentColor),
+              primary: colorContainer.scaffoldBackgroundColor,
+              backgroundColor: colorContainer.accentColor,
+              shape:
+                  RoundedRectangleBorder(borderRadius: BorderRadius.zero), //😍
+            ),
           ),
         ),
       ],
