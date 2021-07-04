@@ -12,4 +12,6 @@ class ColorContainer {
   Color cardColor = Color(0x1a000000); //0x1affffff
   Color activeSliderColor = Color(0xFF00BFA5);
   Color inactiveSliderColor = Color(0x8000BFA5);
+  Color underWeightColor = Colors.red;
+  Color overWeightColor = Colors.amber.shade400;
 }

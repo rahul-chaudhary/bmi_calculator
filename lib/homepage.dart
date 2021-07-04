@@ -2,11 +2,18 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:bmi_cal/bmi_card.dart';
 import 'package:bmi_cal/color_container.dart';
+import 'package:bmi_cal/result_page.dart';
+import 'package:flutter/services.dart';
+
+BMICard bmiCard = BMICard();
+ColorContainer colorContainer = ColorContainer();
 
 double _weightCurrentValue = 78;
 double _heightCurrentValue = 178;
 
 class HomePage extends StatefulWidget {
+  double getWeight() => _weightCurrentValue;
+  double getHeight() => _heightCurrentValue;
   const HomePage({Key? key}) : super(key: key);
 
   @override
@@ -14,11 +21,10 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  BMICard bmiCard = BMICard();
-  ColorContainer colorContainer = ColorContainer();
-
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setEnabledSystemUIOverlays(
+        [SystemUiOverlay.top]); //To enable fullscreen support
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
@@ -143,7 +149,14 @@ class _HomePageState extends State<HomePage> {
         Expanded(
           flex: 1,
           child: TextButton(
-            onPressed: () {},
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => ResultPage(),
+                ),
+              );
+            },
             child: Text(
               'CALCULATE',
               style: TextStyle(

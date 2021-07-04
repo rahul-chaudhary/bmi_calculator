@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:bmi_cal/homepage.dart';
 import 'package:bmi_cal/color_container.dart';
+import 'package:bmi_cal/result_page.dart';
 
 void main() {
   ColorContainer colorContainer = ColorContainer();
